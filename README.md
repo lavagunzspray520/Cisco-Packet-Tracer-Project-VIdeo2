@@ -12,3 +12,15 @@ example small-office lab, and pro tips.
 Open the HTML viewer in any browser and use **Print &rarr; Save as PDF** for a
 clean A4 export. The SVG is fully self-contained and renders directly on
 GitHub.
+
+## For AI Agents
+
+If you are an AI coding agent (Kiro, Claude Code, Cursor, Codex, Aider, etc.)
+working on this repo, read these first:
+
+- [`AGENT.md`](AGENT.md) &mdash; project context, conventions, decisions, chat history
+- [`SKILLS.md`](SKILLS.md) &mdash; reusable hand-drawn SVG techniques (turbulence
+  filter, 3D title boxes, icon library, highlighter washes, etc.)
+
+Kiro users: `.kiro/steering/project-context.md` auto-loads these on every
+session in this workspace.
