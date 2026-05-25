@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Cisco Packet Tracer - Visual Field Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Hand-drawn sketchnote infographic explaining Cisco Packet Tracer."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink: #1A1A1A;
+      --paper: #FEFEFB;
+      --teal: #2A9D8F;
+      --orange: #E76F51;
+      --red: #C75D5D;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ECE7DC;
+      font-family: 'Architects Daughter', 'Caveat', 'Comic Sans MS', cursive;
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    header {
+      max-width: 880px;
+      margin: 28px auto 12px;
+      padding: 0 16px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    h1 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 28px;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+    h1 span { color: var(--orange); }
+    .meta { font-family: 'Caveat', cursive; font-size: 18px; color: #555; }
+    .actions a {
+      display: inline-block;
+      padding: 8px 14px;
+      margin-left: 8px;
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 14px;
+      letter-spacing: 1px;
+      border-radius: 4px;
+      box-shadow: 4px 4px 0 var(--teal);
+      transition: transform 0.1s ease;
+    }
+    .actions a:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--teal); }
+    .actions a.alt { box-shadow: 4px 4px 0 var(--orange); }
+    .actions a.alt:hover { box-shadow: 6px 6px 0 var(--orange); }
+
+    main {
+      max-width: 880px;
+      margin: 0 auto 60px;
+      padding: 0 16px;
+    }
+    .paper {
+      background: var(--paper);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .paper svg { display: block; width: 100%; height: auto; }
+
+    footer {
+      max-width: 880px;
+      margin: 0 auto 40px;
+      padding: 0 16px;
+      font-family: 'Caveat', cursive;
+      font-size: 18px;
+      color: #444;
+      text-align: center;
+    }
+    footer a { color: var(--teal); }
+
+    @media print {
+      body { background: white; }
+      header, footer { display: none; }
+      main { margin: 0; padding: 0; max-width: none; }
+      .paper { box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>CISCO PACKET <span>TRACER</span></h1>
+      <div class="meta">// A visual field guide  &middot;  sketchnote edition 01</div>
+    </div>
+    <div class="actions">
+      <a href="cisco-packet-tracer-sketchnote.svg" download>Download SVG</a>
+      <a class="alt" href="javascript:window.print()">Print / Save PDF</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="paper">
+      <object data="cisco-packet-tracer-sketchnote.svg" type="image/svg+xml" aria-label="Cisco Packet Tracer sketchnote infographic">
+        <img src="cisco-packet-tracer-sketchnote.svg" alt="Cisco Packet Tracer sketchnote infographic"/>
+      </object>
+    </div>
+  </main>
+
+  <footer>
+    Tip: open this page in a desktop browser for crisp hand-drawn fonts, or use <em>Print &rarr; Save as PDF</em> for an A4 portrait copy.
+  </footer>
+</body>
+</html>
