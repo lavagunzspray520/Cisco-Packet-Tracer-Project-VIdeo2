@@ -1,0 +1,16 @@
+{
+  "project_type": "Visual learning artifacts repo (SVG sketchnotes) - now adding Word/PowerPoint deliverables",
+  "language": "Python (for generation scripts)",
+  "build_system": "None (static files). Python scripts generate .docx and .pptx files.",
+  "test_framework": "None - verification is file generation and content validation",
+  "build_command": "python generate_webinar.py",
+  "test_command": "python -c \"import docx; import pptx; print('Libraries available')\" && ls -la *.docx *.pptx",
+  "verification_instructions": "1. Run the generation script. 2. Confirm .docx and .pptx files are created. 3. Verify file sizes are non-trivial (indicating real content).",
+  "snapshot_or_generated_files": "Cisco_Packet_Tracer_Webinar_Script.docx and Cisco_Packet_Tracer_Presentation.pptx are the final deliverables",
+  "setup_instructions": "pip install python-docx python-pptx",
+  "environment_constraints": "OPEN_INTERNET - can install packages freely. Python 3.11 available.",
+  "contribution_requirements": "Conventional commits. Visual artifacts in topic-slug folders. But this task adds document files to root or a dedicated folder.",
+  "key_patterns": "Repository uses topic-slug folder pattern. New deliverables should go in a 'webinar/' subfolder for organization.",
+  "relevant_files": ["generate_webinar.py (to be created)", "webinar/Cisco_Packet_Tracer_Webinar_Script.docx (output)", "webinar/Cisco_Packet_Tracer_Presentation.pptx (output)"],
+  "directory_structure": "Root has README.md, AGENT.md, SKILLS.md. sketchnote/ has SVG + HTML viewer. New webinar/ folder will hold the generated documents."
+}

@@ -1,0 +1,34 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Create a Python script that generates both the Word (.docx) webinar script and the PowerPoint (.pptx) presentation about Cisco Packet Tracer. Both files must be synchronized, use simple language, cover Philippine-context scenarios, and include common problems/misconceptions.",
+  "status": "completed",
+  "steps": [
+    "Create directory: webinar/ in the project root",
+    "Create file: generate_webinar.py in project root that generates both documents",
+    "The Word document (Cisco_Packet_Tracer_Webinar_Script.docx) must include AT LEAST 30 slide sections to fill 1+ hour, with each section containing: (a) Slide number and title, (b) Exact script/narration to read (simple language, short sentences, understandable by a 5-year-old), (c) Suggested background music/song, (d) Suggested animation/transition for that slide, (e) Emotion/delivery style guidance for the presenter",
+    "The PowerPoint (Cisco_Packet_Tracer_Presentation.pptx) must have at least 30 slides including: (a) Title slide, (b) What is Cisco Packet Tracer definition slides, (c) Key features slides, (d) How to download/install, (e) Interface overview slides, (f) Philippine-context scenario slides (at least 5 - e.g., setting up a school network in Manila, connecting a barangay health center, a sari-sari store POS network, university campus in Cebu, government office in Davao), (g) Step-by-step tutorial slides, (h) Common problems and misconceptions slides (at least 5), (i) Tips and tricks, (j) Q&A and closing slides",
+    "Common problems/misconceptions to cover in BOTH files: (1) Packet Tracer is NOT the real internet - it is just a simulator, (2) You cannot install real software inside Packet Tracer, (3) Not all Cisco commands work in Packet Tracer - some are missing, (4) Packet Tracer is NOT the same as GNS3 or EVE-NG, (5) You need a Cisco NetAcad account to download it - it is not on random websites, (6) Saving your work - many students forget to save and lose their topology, (7) Cable types matter - you cannot use any cable for any connection, (8) Devices need IP addresses configured - they do not get them automatically unless DHCP is set up, (9) Simulation mode vs Realtime mode confusion, (10) Packet Tracer projects (.pkt files) are not compatible across all versions",
+    "PowerPoint slides should have: colored backgrounds (alternating light blue, light green, light orange), bullet points with large readable font, relevant placeholder text for where images would go",
+    "Run the script to generate both files in the webinar/ directory",
+    "Verify both files exist and have substantial size (docx > 20KB, pptx > 50KB)"
+  ],
+  "acceptance_criteria": [
+    "webinar/Cisco_Packet_Tracer_Webinar_Script.docx exists and is > 20KB",
+    "webinar/Cisco_Packet_Tracer_Presentation.pptx exists and is > 50KB",
+    "The Word document contains at least 30 slide sections with script, music, animation, and emotion guidance",
+    "The PowerPoint contains at least 30 slides",
+    "Philippine-context scenarios are present in both files",
+    "Common problems and misconceptions section exists in both files",
+    "Language throughout is simple, short sentences, no jargon without explanation",
+    "Both files are synchronized - slide numbers in the script match the presentation slides"
+  ],
+  "verification": [
+    "python generate_webinar.py",
+    "python -c \"import os; d=os.path.getsize('webinar/Cisco_Packet_Tracer_Webinar_Script.docx'); p=os.path.getsize('webinar/Cisco_Packet_Tracer_Presentation.pptx'); print(f'DOCX: {d} bytes, PPTX: {p} bytes'); assert d > 20000, f'DOCX too small: {d}'; assert p > 50000, f'PPTX too small: {p}'; print('SIZE CHECK PASSED')\"",
+    "python -c \"from docx import Document; doc=Document('webinar/Cisco_Packet_Tracer_Webinar_Script.docx'); paras=[p.text for p in doc.paragraphs]; slide_refs=[p for p in paras if 'Slide' in p and any(c.isdigit() for c in p)]; print(f'Found {len(slide_refs)} slide references in script'); assert len(slide_refs) >= 30, f'Need 30+ slides, found {len(slide_refs)}'\"",
+    "python -c \"from pptx import Presentation; prs=Presentation('webinar/Cisco_Packet_Tracer_Presentation.pptx'); print(f'Found {len(prs.slides)} slides'); assert len(prs.slides) >= 30, f'Need 30+ slides, found {len(prs.slides)}'\""
+  ],
+  "blocked_reason": null,
+  "findings": "Successfully generated both files. DOCX is 49913 bytes (well above 20KB minimum). PPTX is 133063 bytes (well above 50KB minimum). 40 slides total with full synchronization between Word script and PowerPoint. All verification checks passed. Used python3 as pyenv has no global python set."
+}

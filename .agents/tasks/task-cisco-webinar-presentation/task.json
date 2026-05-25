@@ -1,0 +1,7 @@
+{
+  "task_id": "task-cisco-webinar-presentation",
+  "task_description": "Generate a Microsoft Word (.docx) webinar script and a PowerPoint (.pptx) presentation about Cisco Packet Tracer. The script must last at least 1 hour, include what to say per slide, background song recommendations, animation suggestions, and delivery emotions. The PowerPoint must include core definitions, Philippine-context scenarios, common problems/misconceptions, and be synchronized with the Word script. Language must be simple enough for a 5-year-old to understand.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002"],
+  "blocked_reason": null
+}
