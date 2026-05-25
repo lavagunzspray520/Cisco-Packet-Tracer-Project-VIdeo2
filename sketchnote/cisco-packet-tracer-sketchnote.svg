@@ -31,7 +31,7 @@
       .wash-yellow { fill: #F4C95D; opacity: 0.30; }
     ]]></style>
 
-    <!-- ROUGH HAND-DRAWN FILTER ------------------------------------ -->
+    <!-- ROUGH HAND-DRAWN FILTER ==================================== -->
     <filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
       <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="5"/>
       <feDisplacementMap in="SourceGraphic" scale="1.4"/>
@@ -42,7 +42,7 @@
       <feDisplacementMap in="SourceGraphic" scale="0.9"/>
     </filter>
 
-    <!-- ARROW MARKER ----------------------------------------------- -->
+    <!-- ARROW MARKER =============================================== -->
     <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6"
             markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0 0 L12 6 L0 12 L3 6 Z" fill="#1A1A1A"/>
@@ -53,7 +53,7 @@
       <path d="M0 0 L12 6 L0 12 L3 6 Z" fill="#2A9D8F"/>
     </marker>
 
-    <!-- HATCH PATTERNS --------------------------------------------- -->
+    <!-- HATCH PATTERNS ============================================= -->
     <pattern id="hatch-teal" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
       <line x1="0" y1="0" x2="0" y2="6" stroke="#2A9D8F" stroke-width="1.4" opacity="0.55"/>
     </pattern>
@@ -64,7 +64,7 @@
       <line x1="0" y1="0" x2="0" y2="6" stroke="#C75D5D" stroke-width="1.4" opacity="0.55"/>
     </pattern>
 
-    <!-- REUSABLE DOODLES ------------------------------------------- -->
+    <!-- REUSABLE DOODLES =========================================== -->
 
     <!-- Router: 50x36 -->
     <g id="icon-router">
@@ -387,7 +387,7 @@
   <!-- y 280-555                                                           -->
   <!-- =================================================================== -->
 
-  <!-- LEFT CARD :: WHAT IS IT? --------------------------------------- -->
+  <!-- LEFT CARD :: WHAT IS IT? ======================================= -->
   <g filter="url(#rough)">
     <rect x="30" y="288" width="370" height="265" rx="10" class="ink-fill" stroke-width="2.4"/>
     <!-- header band -->
@@ -430,7 +430,7 @@
     <text x="22" y="55" text-anchor="middle" class="body-font" font-size="10">LEARNERS</text>
   </g>
 
-  <!-- RIGHT CARD :: KEY FEATURES ------------------------------------- -->
+  <!-- RIGHT CARD :: KEY FEATURES ===================================== -->
   <g filter="url(#rough)">
     <rect x="410" y="288" width="360" height="265" rx="10" class="ink-fill" stroke-width="2.4"/>
     <rect x="410" y="288" width="360" height="38" rx="10" class="accent-orange" fill="#E76F51"/>
@@ -491,7 +491,7 @@
   <!-- y 575-820                                                           -->
   <!-- =================================================================== -->
 
-  <!-- LEFT CARD :: WORKFLOW ----------------------------------------- -->
+  <!-- LEFT CARD :: WORKFLOW ========================================= -->
   <g filter="url(#rough)">
     <rect x="30" y="575" width="370" height="240" rx="10" class="ink-fill" stroke-width="2.4"/>
     <rect x="30" y="575" width="370" height="38" rx="10" class="accent-red" fill="#C75D5D"/>
@@ -545,7 +545,7 @@
   <text x="240" y="797" text-anchor="middle" class="heading-font" font-size="14">TEST</text>
   <text x="240" y="809" text-anchor="middle" class="body-font" font-size="9">ping &#183; tracert</text>
 
-  <!-- RIGHT CARD :: WHY USE IT? -------------------------------------- -->
+  <!-- RIGHT CARD :: WHY USE IT? ====================================== -->
   <g filter="url(#rough)">
     <rect x="410" y="575" width="360" height="240" rx="10" class="ink-fill" stroke-width="2.4"/>
     <rect x="410" y="575" width="360" height="38" rx="10" class="accent-teal" fill="#2A9D8F"/>
