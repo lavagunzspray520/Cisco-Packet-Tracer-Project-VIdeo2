@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 1131"
+     width="800" height="1131"
+     role="img"
+     aria-label="Hand-drawn sketchnote infographic about Cisco Packet Tracer">
+
+  <title>Cisco Packet Tracer — A Visual Field Guide</title>
+
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Permanent+Marker&family=Architects+Daughter&display=swap');
+
+      .title-font   { font-family: 'Permanent Marker', 'Marker Felt', 'Impact', 'Comic Sans MS', cursive; }
+      .heading-font { font-family: 'Caveat', 'Bradley Hand', 'Comic Sans MS', cursive; font-weight: 700; }
+      .marker-font  { font-family: 'Permanent Marker', 'Marker Felt', 'Comic Sans MS', cursive; }
+      .body-font    { font-family: 'Architects Daughter', 'Caveat', 'Comic Sans MS', cursive; }
+      .mono-font    { font-family: 'Courier New', 'Courier', monospace; }
+
+      text { fill: #1A1A1A; }
+      .ink { stroke: #1A1A1A; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .ink-fill { fill: #FEFEFB; stroke: #1A1A1A; stroke-linecap: round; stroke-linejoin: round; }
+
+      .accent-teal   { fill: #2A9D8F; }
+      .accent-orange { fill: #E76F51; }
+      .accent-red    { fill: #C75D5D; }
+
+      .wash-teal   { fill: #2A9D8F; opacity: 0.18; }
+      .wash-orange { fill: #E76F51; opacity: 0.18; }
+      .wash-red    { fill: #C75D5D; opacity: 0.16; }
+      .wash-yellow { fill: #F4C95D; opacity: 0.30; }
+    ]]></style>
+
+    <!-- ROUGH HAND-DRAWN FILTER ------------------------------------ -->
+    <filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="5"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.4"/>
+    </filter>
+
+    <filter id="rough-soft" x="-1%" y="-1%" width="102%" height="102%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="9"/>
+      <feDisplacementMap in="SourceGraphic" scale="0.9"/>
+    </filter>
+
+    <!-- ARROW MARKER ----------------------------------------------- -->
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L12 6 L0 12 L3 6 Z" fill="#1A1A1A"/>
+    </marker>
+
+    <marker id="arrow-teal" viewBox="0 0 12 12" refX="10" refY="6"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L12 6 L0 12 L3 6 Z" fill="#2A9D8F"/>
+    </marker>
+
+    <!-- HATCH PATTERNS --------------------------------------------- -->
+    <pattern id="hatch-teal" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#2A9D8F" stroke-width="1.4" opacity="0.55"/>
+    </pattern>
+    <pattern id="hatch-orange" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#E76F51" stroke-width="1.4" opacity="0.55"/>
+    </pattern>
+    <pattern id="hatch-red" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(60)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#C75D5D" stroke-width="1.4" opacity="0.55"/>
+    </pattern>
+
+    <!-- REUSABLE DOODLES ------------------------------------------- -->
+
+    <!-- Router: 50x36 -->
+    <g id="icon-router">
+      <line x1="10" y1="14" x2="6"  y2="2" class="ink" stroke-width="1.8"/>
+      <line x1="40" y1="14" x2="44" y2="2" class="ink" stroke-width="1.8"/>
+      <circle cx="6"  cy="2" r="2" class="accent-orange"/>
+      <circle cx="44" cy="2" r="2" class="accent-orange"/>
+      <rect x="2" y="14" width="46" height="22" rx="4" class="ink-fill" stroke-width="2"/>
+      <path d="M10 22 L20 22 M14 22 L18 26 M14 22 L18 18" class="ink" stroke-width="1.5"/>
+      <path d="M30 22 L40 22 M36 22 L32 26 M36 22 L32 18" class="ink" stroke-width="1.5"/>
+      <circle cx="14" cy="32" r="1.4" class="accent-teal"/>
+      <circle cx="22" cy="32" r="1.4" class="accent-teal"/>
+      <circle cx="30" cy="32" r="1.4" class="accent-orange"/>
+      <circle cx="38" cy="32" r="1.4" class="accent-red"/>
+    </g>
+
+    <!-- Switch: 64x22 -->
+    <g id="icon-switch">
+      <rect x="2" y="2" width="60" height="18" rx="3" class="ink-fill" stroke-width="2"/>
+      <path d="M10 8 L18 8 M14 5 L18 8 L14 11" class="ink" stroke-width="1.5"/>
+      <path d="M28 8 L36 8 M32 5 L28 8 L32 11" class="ink" stroke-width="1.5"/>
+      <path d="M44 8 L52 8 M48 5 L52 8 L48 11" class="ink" stroke-width="1.5"/>
+      <rect x="6"  y="14" width="6" height="4" class="accent-teal"/>
+      <rect x="16" y="14" width="6" height="4" class="accent-teal"/>
+      <rect x="26" y="14" width="6" height="4" class="accent-orange"/>
+      <rect x="36" y="14" width="6" height="4" class="accent-teal"/>
+      <rect x="46" y="14" width="6" height="4" class="accent-red"/>
+    </g>
+
+    <!-- PC: 44x40 -->
+    <g id="icon-pc">
+      <rect x="0" y="0" width="44" height="28" rx="2" class="ink-fill" stroke-width="2"/>
+      <rect x="3" y="3" width="38" height="22" class="wash-teal"/>
+      <line x1="6" y1="8"  x2="38" y2="8"  stroke="#1A1A1A" stroke-width="1.2"/>
+      <line x1="6" y1="13" x2="28" y2="13" stroke="#1A1A1A" stroke-width="1.2"/>
+      <line x1="6" y1="18" x2="34" y2="18" stroke="#1A1A1A" stroke-width="1.2"/>
+      <rect x="16" y="28" width="12" height="5" class="ink-fill" stroke-width="1.5"/>
+      <line x1="8" y1="38" x2="36" y2="38" class="ink" stroke-width="2"/>
+    </g>
+
+    <!-- Server: 32x52 -->
+    <g id="icon-server">
+      <rect x="0" y="0" width="32" height="50" rx="3" class="ink-fill" stroke-width="2"/>
+      <line x1="0" y1="13" x2="32" y2="13" class="ink" stroke-width="1.2"/>
+      <line x1="0" y1="26" x2="32" y2="26" class="ink" stroke-width="1.2"/>
+      <line x1="0" y1="39" x2="32" y2="39" class="ink" stroke-width="1.2"/>
+      <circle cx="5"  cy="7"  r="1.6" class="accent-orange"/>
+      <circle cx="5"  cy="20" r="1.6" class="accent-teal"/>
+      <circle cx="5"  cy="33" r="1.6" class="accent-teal"/>
+      <circle cx="5"  cy="45" r="1.6" class="accent-red"/>
+      <line x1="12" y1="7"  x2="26" y2="7"  class="ink" stroke-width="1"/>
+      <line x1="12" y1="20" x2="26" y2="20" class="ink" stroke-width="1"/>
+      <line x1="12" y1="33" x2="26" y2="33" class="ink" stroke-width="1"/>
+      <line x1="12" y1="45" x2="26" y2="45" class="ink" stroke-width="1"/>
+    </g>
+
+    <!-- Stick figure: 22x44 -->
+    <g id="icon-stick">
+      <circle cx="11" cy="6" r="5" class="ink-fill" stroke-width="2"/>
+      <path d="M11 11 L11 26" class="ink" stroke-width="2"/>
+      <path d="M11 16 L2 22" class="ink" stroke-width="2"/>
+      <path d="M11 16 L20 22" class="ink" stroke-width="2"/>
+      <path d="M11 26 L4 40" class="ink" stroke-width="2"/>
+      <path d="M11 26 L18 40" class="ink" stroke-width="2"/>
+    </g>
+
+    <!-- Cloud: 70x36 -->
+    <g id="icon-cloud">
+      <path d="M14 28 Q4 28 4 20 Q4 12 14 12 Q16 4 26 4 Q36 4 38 12 Q48 8 54 16 Q66 16 66 24 Q66 32 56 32 L14 32 Q12 32 14 28 Z"
+            class="ink-fill" stroke-width="2"/>
+    </g>
+
+    <!-- Wifi waves: 24x20 -->
+    <g id="icon-wifi">
+      <path d="M2 18 Q12 6 22 18" class="ink" stroke-width="2"/>
+      <path d="M6 16 Q12 10 18 16" class="ink" stroke-width="2"/>
+      <circle cx="12" cy="17" r="1.6" class="accent-teal"/>
+    </g>
+
+    <!-- Lightbulb: 24x32 -->
+    <g id="icon-bulb">
+      <path d="M12 2 Q4 2 4 12 Q4 18 8 22 L8 26 L16 26 L16 22 Q20 18 20 12 Q20 2 12 2 Z"
+            class="ink-fill" stroke-width="2"/>
+      <line x1="8"  y1="28" x2="16" y2="28" class="ink" stroke-width="1.5"/>
+      <line x1="9"  y1="30" x2="15" y2="30" class="ink" stroke-width="1.5"/>
+      <path d="M9 14 L10 18 M14 18 L15 14" class="ink" stroke-width="1.2"/>
+      <circle cx="12" cy="11" r="3" class="accent-orange"/>
+    </g>
+
+    <!-- Lock/Shield: 28x32 -->
+    <g id="icon-shield">
+      <path d="M14 1 L26 6 Q26 22 14 30 Q2 22 2 6 Z" class="ink-fill" stroke-width="2"/>
+      <path d="M14 1 L26 6 Q26 22 14 30 Z" class="wash-teal"/>
+      <path d="M9 15 L13 19 L20 11" class="ink" stroke-width="2.4"/>
+    </g>
+
+    <!-- Dollar coin: 28x28 -->
+    <g id="icon-dollar">
+      <circle cx="14" cy="14" r="12" class="ink-fill" stroke-width="2"/>
+      <circle cx="14" cy="14" r="12" class="wash-yellow"/>
+      <text x="14" y="20" text-anchor="middle" class="marker-font" font-size="18" fill="#1A1A1A">$</text>
+    </g>
+
+    <!-- Eye: 32x20 -->
+    <g id="icon-eye">
+      <path d="M2 10 Q16 -2 30 10 Q16 22 2 10 Z" class="ink-fill" stroke-width="2"/>
+      <circle cx="16" cy="10" r="5" class="ink-fill" stroke-width="1.5"/>
+      <circle cx="16" cy="10" r="2.5" fill="#1A1A1A"/>
+      <circle cx="14" cy="8" r="1" fill="#FEFEFB"/>
+    </g>
+
+    <!-- Certificate: 32x26 -->
+    <g id="icon-cert">
+      <rect x="2" y="2" width="28" height="20" rx="2" class="ink-fill" stroke-width="2"/>
+      <line x1="6"  y1="8"  x2="26" y2="8"  class="ink" stroke-width="1"/>
+      <line x1="6"  y1="12" x2="22" y2="12" class="ink" stroke-width="1"/>
+      <line x1="6"  y1="16" x2="20" y2="16" class="ink" stroke-width="1"/>
+      <circle cx="24" cy="20" r="5" class="ink-fill" stroke-width="2"/>
+      <circle cx="24" cy="20" r="5" class="wash-orange"/>
+      <path d="M21 25 L20 30 M27 25 L28 30" class="ink" stroke-width="1.5"/>
+      <text x="24" y="22.5" text-anchor="middle" class="heading-font" font-size="6" fill="#1A1A1A">★</text>
+    </g>
+
+    <!-- Terminal/CLI: 32x26 -->
+    <g id="icon-cli">
+      <rect x="0" y="0" width="32" height="26" rx="2" class="ink-fill" stroke-width="2"/>
+      <rect x="0" y="0" width="32" height="6" fill="#1A1A1A"/>
+      <circle cx="3" cy="3" r="1" class="accent-red"/>
+      <circle cx="6" cy="3" r="1" class="accent-orange"/>
+      <circle cx="9" cy="3" r="1" class="accent-teal"/>
+      <text x="4" y="14" class="mono-font" font-size="6" fill="#2A9D8F">&gt;_</text>
+      <text x="4" y="21" class="mono-font" font-size="5" fill="#1A1A1A">ping</text>
+    </g>
+
+    <!-- Wand / wizard: 30x30 -->
+    <g id="icon-wand">
+      <path d="M2 28 L26 4" class="ink" stroke-width="2.6"/>
+      <path d="M22 0 L24 4 L28 6 L24 8 L22 12 L20 8 L16 6 L20 4 Z" class="ink-fill" stroke-width="1.8"/>
+      <path d="M22 0 L24 4 L28 6 L24 8 L22 12 L20 8 L16 6 L20 4 Z" class="wash-orange"/>
+      <circle cx="8" cy="22" r="1.5" class="accent-orange"/>
+      <circle cx="14" cy="16" r="1.2" class="accent-teal"/>
+    </g>
+
+    <!-- IoT lightbulb device: 30x30 -->
+    <g id="icon-iot">
+      <rect x="3" y="6" width="24" height="20" rx="3" class="ink-fill" stroke-width="2"/>
+      <rect x="3" y="6" width="24" height="20" rx="3" class="wash-teal"/>
+      <circle cx="9"  cy="14" r="2" fill="#1A1A1A"/>
+      <circle cx="21" cy="14" r="2" class="accent-orange"/>
+      <path d="M8 20 Q15 24 22 20" class="ink" stroke-width="1.5"/>
+      <line x1="6"  y1="6" x2="3" y2="2" class="ink" stroke-width="1.5"/>
+      <line x1="24" y1="6" x2="27" y2="2" class="ink" stroke-width="1.5"/>
+    </g>
+
+    <!-- People (multi-user): 44x28 -->
+    <g id="icon-people">
+      <circle cx="10" cy="8" r="5" class="ink-fill" stroke-width="2"/>
+      <path d="M2 26 Q2 16 10 16 Q18 16 18 26" class="ink-fill" stroke-width="2"/>
+      <circle cx="30" cy="8" r="5" class="ink-fill" stroke-width="2"/>
+      <path d="M22 26 Q22 16 30 16 Q38 16 38 26" class="ink-fill" stroke-width="2"/>
+      <circle cx="30" cy="8" r="5" class="wash-orange"/>
+    </g>
+
+    <!-- Topology / network nodes: 36x32 -->
+    <g id="icon-topology">
+      <line x1="6"  y1="6"  x2="18" y2="16" class="ink" stroke-width="1.6"/>
+      <line x1="30" y1="6"  x2="18" y2="16" class="ink" stroke-width="1.6"/>
+      <line x1="18" y1="16" x2="6"  y2="28" class="ink" stroke-width="1.6"/>
+      <line x1="18" y1="16" x2="30" y2="28" class="ink" stroke-width="1.6"/>
+      <circle cx="6"  cy="6"  r="3.5" class="ink-fill" stroke-width="1.8"/>
+      <circle cx="30" cy="6"  r="3.5" class="ink-fill" stroke-width="1.8"/>
+      <circle cx="18" cy="16" r="4"   class="ink-fill" stroke-width="2"/>
+      <circle cx="18" cy="16" r="4"   class="wash-orange"/>
+      <circle cx="6"  cy="28" r="3.5" class="ink-fill" stroke-width="1.8"/>
+      <circle cx="30" cy="28" r="3.5" class="ink-fill" stroke-width="1.8"/>
+    </g>
+
+    <!-- Star burst: 40x40 -->
+    <g id="icon-star">
+      <path d="M20 2 L24 14 L36 14 L26 22 L30 34 L20 26 L10 34 L14 22 L4 14 L16 14 Z"
+            class="ink-fill" stroke-width="2"/>
+      <path d="M20 2 L24 14 L36 14 L26 22 L30 34 L20 26 L10 34 L14 22 L4 14 L16 14 Z"
+            class="wash-orange"/>
+    </g>
+
+    <!-- Checkmark in circle: 20x20 -->
+    <g id="icon-check">
+      <circle cx="10" cy="10" r="9" class="ink-fill" stroke-width="2"/>
+      <circle cx="10" cy="10" r="9" class="wash-teal"/>
+      <path d="M5 10 L9 14 L15 6" class="ink" stroke-width="2.4"/>
+    </g>
+
+    <!-- Speech bubble: 80x36 -->
+    <g id="icon-speech">
+      <path d="M4 4 Q4 0 8 0 L72 0 Q76 0 76 4 L76 22 Q76 26 72 26 L24 26 L16 34 L18 26 L8 26 Q4 26 4 22 Z"
+            class="ink-fill" stroke-width="2"/>
+    </g>
+
+    <!-- Globe: 36x36 -->
+    <g id="icon-globe">
+      <circle cx="18" cy="18" r="16" class="ink-fill" stroke-width="2"/>
+      <circle cx="18" cy="18" r="16" class="wash-teal"/>
+      <ellipse cx="18" cy="18" rx="8" ry="16" class="ink" stroke-width="1.5"/>
+      <line x1="2" y1="18" x2="34" y2="18" class="ink" stroke-width="1.5"/>
+      <path d="M4 11 Q18 15 32 11" class="ink" stroke-width="1.2"/>
+      <path d="M4 25 Q18 21 32 25" class="ink" stroke-width="1.2"/>
+    </g>
+
+    <!-- Box (download/package): 30x30 -->
+    <g id="icon-box">
+      <path d="M2 8 L15 2 L28 8 L15 14 Z" class="ink-fill" stroke-width="2"/>
+      <path d="M2 8 L2 22 L15 28 L15 14 Z" class="ink-fill" stroke-width="2"/>
+      <path d="M28 8 L28 22 L15 28 L15 14 Z" class="ink-fill" stroke-width="2"/>
+      <path d="M28 8 L28 22 L15 28 L15 14 Z" class="wash-orange"/>
+    </g>
+
+  </defs>
+
+  <!-- =================================================================== -->
+  <!-- PAPER BACKGROUND                                                    -->
+  <!-- =================================================================== -->
+  <rect width="800" height="1131" fill="#FEFEFB"/>
+
+  <!-- Faint paper edge (very subtle) -->
+  <rect x="6" y="6" width="788" height="1119" fill="none" stroke="#1A1A1A" stroke-width="0.6" opacity="0.18" stroke-dasharray="2 4"/>
+
+  <!-- =================================================================== -->
+  <!-- TOP HEADER STRIP  (y 14-66)                                         -->
+  <!-- =================================================================== -->
+  <g filter="url(#rough-soft)">
+    <line x1="30" y1="48" x2="240" y2="48" class="ink" stroke-width="1.4"/>
+    <line x1="30" y1="52" x2="180" y2="52" class="accent-orange" stroke="#E76F51" stroke-width="1.4"/>
+  </g>
+  <text x="30" y="42" class="heading-font" font-size="18">// A VISUAL FIELD GUIDE</text>
+  <text x="30" y="64" class="body-font" font-size="11" fill="#555">EDITION 01 &#183; SKETCHNOTE SERIES</text>
+
+  <!-- top-right page badge -->
+  <g filter="url(#rough)">
+    <circle cx="755" cy="45" r="22" class="ink-fill" stroke-width="2"/>
+    <circle cx="755" cy="45" r="22" class="wash-orange"/>
+  </g>
+  <text x="755" y="42" text-anchor="middle" class="body-font" font-size="9">PAGE</text>
+  <text x="755" y="58" text-anchor="middle" class="marker-font" font-size="18">01</text>
+
+  <!-- decorative wave top -->
+  <path d="M270 50 Q310 38 350 50 T430 50 T510 50 T590 50 T670 50"
+        class="ink" stroke-width="1.6" stroke-dasharray="0" fill="none" filter="url(#rough-soft)"/>
+
+  <!-- =================================================================== -->
+  <!-- TITLE BLOCK  (y 80-225)                                             -->
+  <!-- =================================================================== -->
+
+  <!-- decorative starburst left of title -->
+  <g transform="translate(40,110)" filter="url(#rough)">
+    <use href="#icon-star"/>
+    <text x="20" y="24" text-anchor="middle" class="marker-font" font-size="9" fill="#1A1A1A">FREE!</text>
+  </g>
+
+  <!-- decorative arrow pointing IN to title from left -->
+  <path d="M88 145 Q110 138 130 142" class="ink" stroke-width="1.8" fill="none"
+        marker-end="url(#arrow)" filter="url(#rough-soft)"/>
+
+  <!-- 3D shadow projection (drawn first, behind front face) -->
+  <g filter="url(#rough)">
+    <path d="M152 100 L716 100 L730 114 L166 114 Z" class="accent-teal" fill="#2A9D8F"/>
+    <path d="M716 100 L730 114 L730 218 L716 204 Z" class="accent-teal" fill="#2A9D8F"/>
+    <path d="M152 204 L716 204 L730 218 L166 218 Z" class="accent-teal" fill="#1F7A6F"/>
+    <!-- hatching on shadow side for ink shading -->
+    <path d="M716 100 L730 114 L730 218 L716 204 Z" fill="url(#hatch-teal)" opacity="0.4"/>
+  </g>
+
+  <!-- Front face of 3D box -->
+  <g filter="url(#rough)">
+    <rect x="138" y="100" width="578" height="104" rx="4" class="ink-fill" stroke-width="3"/>
+    <!-- inner trim line -->
+    <rect x="146" y="108" width="562" height="88" rx="3" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+  </g>
+
+  <!-- Title text -->
+  <text x="427" y="158" text-anchor="middle" class="title-font" font-size="46" fill="#1A1A1A">CISCO PACKET TRACER</text>
+  <text x="427" y="186" text-anchor="middle" class="heading-font" font-size="20" fill="#E76F51">~ NETWORK SIMULATION  &#183;  HANDS-ON LEARNING ~</text>
+
+  <!-- decorative speech bubble right of title -->
+  <g transform="translate(640,52)" filter="url(#rough)">
+    <use href="#icon-speech"/>
+    <text x="40" y="17" text-anchor="middle" class="heading-font" font-size="13">BUILD ANY</text>
+    <text x="40" y="32" text-anchor="middle" class="heading-font" font-size="13">NETWORK!</text>
+  </g>
+
+  <!-- doodle: laptop running PT bottom-left of title -->
+  <g transform="translate(28,170)" filter="url(#rough-soft)">
+    <use href="#icon-pc"/>
+  </g>
+
+  <!-- doodle: cloud with WAN above title right -->
+  <g transform="translate(710,160)" filter="url(#rough-soft)">
+    <use href="#icon-cloud" transform="scale(0.7)"/>
+    <text x="24" y="22" text-anchor="middle" class="body-font" font-size="9">WAN</text>
+  </g>
+
+  <!-- subtitle banner with version -->
+  <g transform="translate(255,212)" filter="url(#rough-soft)">
+    <rect x="0" y="0" width="290" height="22" rx="11" class="ink-fill" stroke-width="1.6"/>
+    <rect x="0" y="0" width="290" height="22" rx="11" class="wash-yellow"/>
+    <text x="145" y="16" text-anchor="middle" class="body-font" font-size="12">v8.2  &#183;  FREE  &#183;  WIN / MAC / LINUX / iOS / ANDROID</text>
+  </g>
+
+  <!-- =================================================================== -->
+  <!-- RADIAL CONNECTOR LINES from title to sections                       -->
+  <!-- =================================================================== -->
+  <g filter="url(#rough-soft)">
+    <path d="M260 235 Q230 250 215 285" class="ink" stroke-width="1.4" fill="none" stroke-dasharray="3 4"/>
+    <path d="M540 235 Q570 250 585 285" class="ink" stroke-width="1.4" fill="none" stroke-dasharray="3 4"/>
+    <path d="M280 235 Q260 270 215 555" class="ink" stroke-width="1" fill="none" stroke-dasharray="2 5" opacity="0.5"/>
+    <path d="M520 235 Q540 270 585 555" class="ink" stroke-width="1" fill="none" stroke-dasharray="2 5" opacity="0.5"/>
+  </g>
+
+  <!-- =================================================================== -->
+  <!-- ROW 1 :: WHAT IS IT?  (left)   |   KEY FEATURES (right)             -->
+  <!-- y 280-555                                                           -->
+  <!-- =================================================================== -->
+
+  <!-- LEFT CARD :: WHAT IS IT? --------------------------------------- -->
+  <g filter="url(#rough)">
+    <rect x="30" y="288" width="370" height="265" rx="10" class="ink-fill" stroke-width="2.4"/>
+    <!-- header band -->
+    <rect x="30" y="288" width="370" height="38" rx="10" class="accent-teal" fill="#2A9D8F"/>
+    <rect x="30" y="320" width="370" height="8" class="accent-teal" fill="#2A9D8F"/>
+  </g>
+  <text x="48" y="315" class="marker-font" font-size="22" fill="#FEFEFB">01 &#183; WHAT IS IT?</text>
+  <g transform="translate(348,295)"><use href="#icon-bulb" transform="scale(0.85)"/></g>
+
+  <!-- body copy -->
+  <text x="48" y="356" class="body-font" font-size="13" fill="#1A1A1A">A FREE network simulator built by</text>
+  <text x="48" y="374" class="body-font" font-size="13" fill="#1A1A1A">CISCO for the NETACAD program.</text>
+  <text x="48" y="392" class="body-font" font-size="13" fill="#1A1A1A">Design, build &amp; troubleshoot</text>
+  <text x="48" y="410" class="body-font" font-size="13" fill="#1A1A1A">complex networks - on a laptop.</text>
+
+  <!-- highlight strip -->
+  <g filter="url(#rough-soft)">
+    <rect x="46" y="420" width="340" height="22" class="wash-orange"/>
+  </g>
+  <text x="50" y="437" class="heading-font" font-size="16" fill="#1A1A1A">"NO CABLES. NO BUDGET. NO LIMITS."</text>
+
+  <!-- bullets with icons -->
+  <g transform="translate(48,455)">
+    <g><use href="#icon-dollar" transform="scale(0.7)"/></g>
+    <text x="32" y="16" class="body-font" font-size="12">100% FREE  -  via NetAcad signup</text>
+  </g>
+  <g transform="translate(48,485)">
+    <g><use href="#icon-globe" transform="scale(0.55)"/></g>
+    <text x="32" y="14" class="body-font" font-size="12">CROSS-PLATFORM  -  desktop + mobile</text>
+  </g>
+  <g transform="translate(48,512)">
+    <g><use href="#icon-box" transform="scale(0.6)"/></g>
+    <text x="32" y="14" class="body-font" font-size="12">v8.2  -  2024 release  &#183;  IoT &amp; AR</text>
+  </g>
+
+  <!-- corner doodle -->
+  <g transform="translate(310,475)" filter="url(#rough-soft)">
+    <use href="#icon-stick"/>
+    <use href="#icon-stick" x="22"/>
+    <text x="22" y="55" text-anchor="middle" class="body-font" font-size="10">LEARNERS</text>
+  </g>
+
+  <!-- RIGHT CARD :: KEY FEATURES ------------------------------------- -->
+  <g filter="url(#rough)">
+    <rect x="410" y="288" width="360" height="265" rx="10" class="ink-fill" stroke-width="2.4"/>
+    <rect x="410" y="288" width="360" height="38" rx="10" class="accent-orange" fill="#E76F51"/>
+    <rect x="410" y="320" width="360" height="8" class="accent-orange" fill="#E76F51"/>
+  </g>
+  <text x="428" y="315" class="marker-font" font-size="22" fill="#FEFEFB">02 &#183; KEY FEATURES</text>
+  <g transform="translate(722,295)"><use href="#icon-star" transform="scale(0.7)"/></g>
+
+  <!-- 3x2 feature grid: each cell ~110x100 -->
+  <!-- Row 1 -->
+  <g transform="translate(425,346)">
+    <g filter="url(#rough-soft)"><rect x="0" y="0" width="108" height="98" rx="6" fill="none" stroke="#1A1A1A" stroke-width="1.4" stroke-dasharray="3 3"/></g>
+    <g transform="translate(36,10)"><use href="#icon-topology"/></g>
+    <text x="54" y="62" text-anchor="middle" class="heading-font" font-size="14">DRAG &amp;</text>
+    <text x="54" y="78" text-anchor="middle" class="heading-font" font-size="14">DROP</text>
+    <text x="54" y="92" text-anchor="middle" class="body-font" font-size="9">topology builder</text>
+  </g>
+  <g transform="translate(541,346)">
+    <g filter="url(#rough-soft)"><rect x="0" y="0" width="108" height="98" rx="6" fill="none" stroke="#1A1A1A" stroke-width="1.4" stroke-dasharray="3 3"/></g>
+    <g transform="translate(38,10)"><use href="#icon-cli"/></g>
+    <text x="54" y="62" text-anchor="middle" class="heading-font" font-size="14">CISCO IOS</text>
+    <text x="54" y="78" text-anchor="middle" class="heading-font" font-size="14">CLI</text>
+    <text x="54" y="92" text-anchor="middle" class="body-font" font-size="9">real commands!</text>
+  </g>
+  <g transform="translate(657,346)">
+    <g filter="url(#rough-soft)"><rect x="0" y="0" width="108" height="98" rx="6" fill="none" stroke="#1A1A1A" stroke-width="1.4" stroke-dasharray="3 3"/></g>
+    <g transform="translate(38,16)"><use href="#icon-eye"/></g>
+    <text x="54" y="62" text-anchor="middle" class="heading-font" font-size="14">SEE THE</text>
+    <text x="54" y="78" text-anchor="middle" class="heading-font" font-size="14">PACKETS</text>
+    <text x="54" y="92" text-anchor="middle" class="body-font" font-size="9">simulation mode</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g transform="translate(425,450)">
+    <g filter="url(#rough-soft)"><rect x="0" y="0" width="108" height="98" rx="6" fill="none" stroke="#1A1A1A" stroke-width="1.4" stroke-dasharray="3 3"/></g>
+    <g transform="translate(39,10)"><use href="#icon-iot"/></g>
+    <text x="54" y="62" text-anchor="middle" class="heading-font" font-size="14">IoT</text>
+    <text x="54" y="78" text-anchor="middle" class="heading-font" font-size="14">DEVICES</text>
+    <text x="54" y="92" text-anchor="middle" class="body-font" font-size="9">smart-home labs</text>
+  </g>
+  <g transform="translate(541,450)">
+    <g filter="url(#rough-soft)"><rect x="0" y="0" width="108" height="98" rx="6" fill="none" stroke="#1A1A1A" stroke-width="1.4" stroke-dasharray="3 3"/></g>
+    <g transform="translate(33,15)"><use href="#icon-people"/></g>
+    <text x="54" y="62" text-anchor="middle" class="heading-font" font-size="14">MULTI-</text>
+    <text x="54" y="78" text-anchor="middle" class="heading-font" font-size="14">USER</text>
+    <text x="54" y="92" text-anchor="middle" class="body-font" font-size="9">collab over LAN</text>
+  </g>
+  <g transform="translate(657,450)">
+    <g filter="url(#rough-soft)"><rect x="0" y="0" width="108" height="98" rx="6" fill="none" stroke="#1A1A1A" stroke-width="1.4" stroke-dasharray="3 3"/></g>
+    <g transform="translate(38,12)"><use href="#icon-wand"/></g>
+    <text x="54" y="62" text-anchor="middle" class="heading-font" font-size="14">ACTIVITY</text>
+    <text x="54" y="78" text-anchor="middle" class="heading-font" font-size="14">WIZARD</text>
+    <text x="54" y="92" text-anchor="middle" class="body-font" font-size="9">graded labs</text>
+  </g>
+
+  <!-- =================================================================== -->
+  <!-- ROW 2 :: WORKFLOW (left)  |  WHY USE IT? (right)                    -->
+  <!-- y 575-820                                                           -->
+  <!-- =================================================================== -->
+
+  <!-- LEFT CARD :: WORKFLOW ----------------------------------------- -->
+  <g filter="url(#rough)">
+    <rect x="30" y="575" width="370" height="240" rx="10" class="ink-fill" stroke-width="2.4"/>
+    <rect x="30" y="575" width="370" height="38" rx="10" class="accent-red" fill="#C75D5D"/>
+    <rect x="30" y="607" width="370" height="8" class="accent-red" fill="#C75D5D"/>
+  </g>
+  <text x="48" y="602" class="marker-font" font-size="22" fill="#FEFEFB">03 &#183; THE WORKFLOW</text>
+  <g transform="translate(348,580)"><use href="#icon-cli" transform="scale(0.85)"/></g>
+
+  <!-- 5 numbered circles connected with curving arrows -->
+  <g filter="url(#rough-soft)">
+    <!-- step 1 -->
+    <circle cx="80"  cy="660" r="22" class="ink-fill" stroke-width="2.2"/>
+    <circle cx="80"  cy="660" r="22" class="wash-teal"/>
+    <text  x="80"  y="667" text-anchor="middle" class="marker-font" font-size="22">1</text>
+    <!-- step 2 -->
+    <circle cx="180" cy="660" r="22" class="ink-fill" stroke-width="2.2"/>
+    <circle cx="180" cy="660" r="22" class="wash-orange"/>
+    <text  x="180" y="667" text-anchor="middle" class="marker-font" font-size="22">2</text>
+    <!-- step 3 -->
+    <circle cx="280" cy="660" r="22" class="ink-fill" stroke-width="2.2"/>
+    <circle cx="280" cy="660" r="22" class="wash-red"/>
+    <text  x="280" y="667" text-anchor="middle" class="marker-font" font-size="22">3</text>
+    <!-- step 4 -->
+    <circle cx="120" cy="755" r="22" class="ink-fill" stroke-width="2.2"/>
+    <circle cx="120" cy="755" r="22" class="wash-orange"/>
+    <text  x="120" y="762" text-anchor="middle" class="marker-font" font-size="22">4</text>
+    <!-- step 5 -->
+    <circle cx="240" cy="755" r="22" class="ink-fill" stroke-width="2.2"/>
+    <circle cx="240" cy="755" r="22" class="wash-teal"/>
+    <text  x="240" y="762" text-anchor="middle" class="marker-font" font-size="22">5</text>
+
+    <!-- arrows between -->
+    <path d="M104 658 Q130 650 156 658" class="ink" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+    <path d="M204 658 Q230 650 256 658" class="ink" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+    <path d="M280 685 Q300 720 250 745" class="ink" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+    <path d="M218 758 Q170 770 142 758" class="ink" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+
+    <!-- gold-star at end -->
+    <g transform="translate(310,735)"><use href="#icon-check"/></g>
+  </g>
+
+  <!-- step labels -->
+  <text x="80"  y="703" text-anchor="middle" class="heading-font" font-size="14">PLAN</text>
+  <text x="80"  y="717" text-anchor="middle" class="body-font" font-size="9">sketch topology</text>
+  <text x="180" y="703" text-anchor="middle" class="heading-font" font-size="14">PLACE</text>
+  <text x="180" y="717" text-anchor="middle" class="body-font" font-size="9">drop devices</text>
+  <text x="280" y="703" text-anchor="middle" class="heading-font" font-size="14">CONNECT</text>
+  <text x="280" y="717" text-anchor="middle" class="body-font" font-size="9">choose cables</text>
+  <text x="120" y="797" text-anchor="middle" class="heading-font" font-size="14">CONFIGURE</text>
+  <text x="120" y="809" text-anchor="middle" class="body-font" font-size="9">CLI / GUI</text>
+  <text x="240" y="797" text-anchor="middle" class="heading-font" font-size="14">TEST</text>
+  <text x="240" y="809" text-anchor="middle" class="body-font" font-size="9">ping &#183; tracert</text>
+
+  <!-- RIGHT CARD :: WHY USE IT? -------------------------------------- -->
+  <g filter="url(#rough)">
+    <rect x="410" y="575" width="360" height="240" rx="10" class="ink-fill" stroke-width="2.4"/>
+    <rect x="410" y="575" width="360" height="38" rx="10" class="accent-teal" fill="#2A9D8F"/>
+    <rect x="410" y="607" width="360" height="8" class="accent-teal" fill="#2A9D8F"/>
+  </g>
+  <text x="428" y="602" class="marker-font" font-size="22" fill="#FEFEFB">04 &#183; WHY USE IT?</text>
+  <g transform="translate(722,580)"><use href="#icon-bulb" transform="scale(0.85)"/></g>
+
+  <!-- 4 benefits, 2x2 grid -->
+  <!-- $0 -->
+  <g transform="translate(428,635)">
+    <g><use href="#icon-dollar"/></g>
+    <text x="38" y="14" class="heading-font" font-size="18">$0 COST</text>
+    <text x="38" y="30" class="body-font" font-size="11">no lab gear, no licence</text>
+  </g>
+  <!-- safe -->
+  <g transform="translate(600,635)">
+    <g><use href="#icon-shield"/></g>
+    <text x="38" y="14" class="heading-font" font-size="18">SAFE TO BREAK</text>
+    <text x="38" y="30" class="body-font" font-size="11">fail. reset. retry.</text>
+  </g>
+  <!-- visible -->
+  <g transform="translate(428,720)">
+    <g transform="translate(0,8)"><use href="#icon-eye"/></g>
+    <text x="38" y="18" class="heading-font" font-size="18">PACKET X-RAY</text>
+    <text x="38" y="34" class="body-font" font-size="11">watch frames flow</text>
+  </g>
+  <!-- cert -->
+  <g transform="translate(600,720)">
+    <g transform="translate(0,2)"><use href="#icon-cert"/></g>
+    <text x="40" y="18" class="heading-font" font-size="18">CCNA / CCNP</text>
+    <text x="40" y="34" class="body-font" font-size="11">certification ready</text>
+  </g>
+
+  <!-- bottom callout -->
+  <g filter="url(#rough-soft)">
+    <path d="M428 786 L755 786" class="accent-orange" stroke="#E76F51" stroke-width="2" stroke-dasharray="6 3"/>
+  </g>
+  <text x="591" y="803" text-anchor="middle" class="heading-font" font-size="14" fill="#1A1A1A">USED IN UNIVERSITIES, BOOTCAMPS &amp; ENTERPRISE TRAINING</text>
+
+  <!-- =================================================================== -->
+  <!-- ROW 3 :: EXAMPLE LAB (full width)                                   -->
+  <!-- y 838-988                                                           -->
+  <!-- =================================================================== -->
+  <g filter="url(#rough)">
+    <rect x="30" y="838" width="740" height="148" rx="10" class="ink-fill" stroke-width="2.4"/>
+    <rect x="30" y="838" width="740" height="34" rx="10" class="accent-orange" fill="#E76F51"/>
+    <rect x="30" y="868" width="740" height="6" class="accent-orange" fill="#E76F51"/>
+  </g>
+  <text x="48" y="863" class="marker-font" font-size="20" fill="#FEFEFB">05 &#183; EXAMPLE LAB  -  "BUILD A SMALL OFFICE NET IN 5 MIN"</text>
+  <g transform="translate(720,841)"><use href="#icon-topology" transform="scale(0.85)"/></g>
+
+  <!-- LEFT: network diagram -->
+  <g transform="translate(56,890)">
+    <!-- ISP cloud -->
+    <g><use href="#icon-cloud" transform="scale(0.85)"/></g>
+    <text x="30" y="50" text-anchor="middle" class="body-font" font-size="9">ISP / WAN</text>
+    <!-- cable cloud -> router -->
+    <path d="M44 22 Q70 22 84 32" class="ink" stroke-width="2" fill="none" stroke-dasharray="4 3" filter="url(#rough-soft)"/>
+    <!-- router -->
+    <g transform="translate(86,16)"><use href="#icon-router"/></g>
+    <text x="111" y="68" text-anchor="middle" class="heading-font" font-size="11">R1</text>
+    <text x="111" y="80" text-anchor="middle" class="body-font" font-size="8">192.168.1.1</text>
+    <!-- cable router -> switch -->
+    <path d="M138 32 Q156 32 168 24" class="ink" stroke-width="2" fill="none" filter="url(#rough-soft)"/>
+    <!-- switch -->
+    <g transform="translate(168,18)"><use href="#icon-switch"/></g>
+    <text x="200" y="55" text-anchor="middle" class="heading-font" font-size="11">SW1</text>
+    <!-- 3 PCs hanging off switch -->
+    <path d="M178 40 L172 60 L160 70" class="ink" stroke-width="1.6" fill="none" filter="url(#rough-soft)"/>
+    <path d="M200 40 L200 70" class="ink" stroke-width="1.6" fill="none" filter="url(#rough-soft)"/>
+    <path d="M218 40 L226 60 L240 70" class="ink" stroke-width="1.6" fill="none" filter="url(#rough-soft)"/>
+    <g transform="translate(140,68)"><use href="#icon-pc" transform="scale(0.6)"/></g>
+    <g transform="translate(184,68)"><use href="#icon-pc" transform="scale(0.6)"/></g>
+    <g transform="translate(228,68)"><use href="#icon-pc" transform="scale(0.6)"/></g>
+    <text x="153" y="98" text-anchor="middle" class="body-font" font-size="8">PC0</text>
+    <text x="197" y="98" text-anchor="middle" class="body-font" font-size="8">PC1</text>
+    <text x="241" y="98" text-anchor="middle" class="body-font" font-size="8">PC2</text>
+    <!-- server -->
+    <g transform="translate(280,12)"><use href="#icon-server" transform="scale(0.7)"/></g>
+    <text x="291" y="58" text-anchor="middle" class="heading-font" font-size="11">S1</text>
+    <text x="291" y="70" text-anchor="middle" class="body-font" font-size="8">DHCP/HTTP</text>
+    <path d="M218 28 Q260 28 280 24" class="ink" stroke-width="1.6" fill="none" filter="url(#rough-soft)"/>
+  </g>
+
+  <!-- MIDDLE: CLI snippet -->
+  <g transform="translate(380,890)" filter="url(#rough)">
+    <rect x="0" y="0" width="220" height="84" rx="6" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="1.5"/>
+    <rect x="0" y="0" width="220" height="14" fill="#2A2A2A"/>
+    <circle cx="6"  cy="7" r="2" class="accent-red"/>
+    <circle cx="14" cy="7" r="2" class="accent-orange"/>
+    <circle cx="22" cy="7" r="2" class="accent-teal"/>
+    <text x="110" y="11" text-anchor="middle" class="mono-font" font-size="7" fill="#CCC">R1 - terminal</text>
+  </g>
+  <g class="mono-font" font-size="8.5" fill="#FEFEFB">
+    <text x="386" y="908">R1&gt; enable</text>
+    <text x="386" y="921">R1# config t</text>
+    <text x="386" y="934">R1(config)# int g0/0</text>
+    <text x="386" y="947" fill="#74D6CB">R1(if)# ip address</text>
+    <text x="386" y="960" fill="#74D6CB">  192.168.1.1 /24</text>
+    <text x="386" y="973">R1(if)# no shutdown</text>
+  </g>
+
+  <!-- RIGHT: ping result speech bubble -->
+  <g transform="translate(615,886)" filter="url(#rough)">
+    <use href="#icon-speech" transform="scale(1.05)"/>
+  </g>
+  <text x="657" y="902" text-anchor="middle" class="heading-font" font-size="13" fill="#2A9D8F">PING SUCCESS!</text>
+  <text x="657" y="917" text-anchor="middle" class="body-font" font-size="9">Reply from 192.168.1.1</text>
+  <text x="657" y="929" text-anchor="middle" class="body-font" font-size="9">bytes=32  time&lt;1ms</text>
+  <text x="657" y="941" text-anchor="middle" class="body-font" font-size="9">TTL=255  -  4/4 lost=0</text>
+
+  <!-- arrow PC -> CLI -->
+  <path d="M340 920 Q360 915 376 918" class="ink" stroke-width="1.4" fill="none" stroke-dasharray="3 3" marker-end="url(#arrow)" filter="url(#rough-soft)"/>
+  <!-- arrow CLI -> bubble -->
+  <path d="M602 935 Q610 935 618 930" class="ink" stroke-width="1.4" fill="none" stroke-dasharray="3 3" marker-end="url(#arrow)" filter="url(#rough-soft)"/>
+
+  <!-- =================================================================== -->
+  <!-- ROW 4 :: PRO TIPS  +  STATS                                         -->
+  <!-- y 1000-1112                                                         -->
+  <!-- =================================================================== -->
+
+  <!-- PRO TIPS card -->
+  <g filter="url(#rough)">
+    <rect x="30" y="1000" width="470" height="115" rx="10" class="ink-fill" stroke-width="2.2"/>
+    <rect x="30" y="1000" width="470" height="28" rx="10" class="accent-red" fill="#C75D5D"/>
+    <rect x="30" y="1022" width="470" height="6" class="accent-red" fill="#C75D5D"/>
+  </g>
+  <text x="48" y="1021" class="marker-font" font-size="18" fill="#FEFEFB">06 &#183; PRO TIPS  +  TAKEAWAYS</text>
+  <g transform="translate(456,1003)"><use href="#icon-bulb" transform="scale(0.65)"/></g>
+
+  <!-- 4 tips in 2x2 -->
+  <g transform="translate(48,1042)">
+    <use href="#icon-check" transform="scale(0.75)"/>
+    <text x="22" y="13" class="body-font" font-size="11">SAVE OFTEN  -  .pkt files lose work fast</text>
+  </g>
+  <g transform="translate(48,1066)">
+    <use href="#icon-check" transform="scale(0.75)"/>
+    <text x="22" y="13" class="body-font" font-size="11">LABEL EVERY DEVICE &amp; INTERFACE</text>
+  </g>
+  <g transform="translate(48,1090)">
+    <use href="#icon-check" transform="scale(0.75)"/>
+    <text x="22" y="13" class="body-font" font-size="11">START SMALL  -&gt;  scale up in stages</text>
+  </g>
+  <g transform="translate(280,1042)">
+    <use href="#icon-check" transform="scale(0.75)"/>
+    <text x="22" y="13" class="body-font" font-size="11">USE SIMULATION MODE to debug</text>
+  </g>
+  <g transform="translate(280,1066)">
+    <use href="#icon-check" transform="scale(0.75)"/>
+    <text x="22" y="13" class="body-font" font-size="11">COMMENT YOUR CONFIGS  (! notes)</text>
+  </g>
+  <g transform="translate(280,1090)">
+    <use href="#icon-check" transform="scale(0.75)"/>
+    <text x="22" y="13" class="body-font" font-size="11">PAIR W/ GNS3 / EVE-NG for advanced</text>
+  </g>
+
+  <!-- STATS / TAKEAWAY block right -->
+  <g filter="url(#rough)">
+    <rect x="510" y="1000" width="260" height="115" rx="10" class="ink-fill" stroke-width="2.2"/>
+    <rect x="510" y="1000" width="260" height="115" rx="10" class="wash-yellow"/>
+  </g>
+  <text x="640" y="1024" text-anchor="middle" class="marker-font" font-size="14">BY THE NUMBERS</text>
+  <line x1="540" y1="1030" x2="740" y2="1030" class="ink" stroke-width="1" stroke-dasharray="2 2"/>
+
+  <text x="525" y="1052" class="marker-font" font-size="22" fill="#E76F51">170+</text>
+  <text x="588" y="1052" class="body-font" font-size="11">countries using PT</text>
+
+  <text x="525" y="1078" class="marker-font" font-size="22" fill="#2A9D8F">25M+</text>
+  <text x="588" y="1078" class="body-font" font-size="11">NetAcad learners</text>
+
+  <text x="525" y="1104" class="marker-font" font-size="22" fill="#C75D5D">v8.2</text>
+  <text x="588" y="1104" class="body-font" font-size="11">latest  -  IoT + AR</text>
+
+  <!-- =================================================================== -->
+  <!-- BOTTOM ANCHOR BANNER  (y 1118 small footer line)                    -->
+  <!-- =================================================================== -->
+  <g filter="url(#rough-soft)">
+    <line x1="30" y1="1122" x2="770" y2="1122" class="ink" stroke-width="1"/>
+  </g>
+  <text x="400" y="1117" text-anchor="middle" class="heading-font" font-size="13" fill="#1A1A1A">~  PRACTICE  &#183;  BREAK  &#183;  LEARN  &#183;  REPEAT  ~</text>
+
+  <!-- =================================================================== -->
+  <!-- DECORATIVE FLOATERS                                                 -->
+  <!-- =================================================================== -->
+
+  <!-- "TIP!" sticker behind the workflow card -->
+  <g transform="translate(360,805) rotate(-8)" filter="url(#rough)">
+    <rect x="0" y="0" width="58" height="20" class="accent-orange" fill="#E76F51"/>
+    <text x="29" y="14" text-anchor="middle" class="marker-font" font-size="11" fill="#FEFEFB">FLOW!</text>
+  </g>
+
+  <!-- "FREE" sticker behind why-use card -->
+  <g transform="translate(745,558) rotate(12)" filter="url(#rough)">
+    <rect x="0" y="0" width="48" height="22" class="accent-teal" fill="#2A9D8F"/>
+    <text x="24" y="16" text-anchor="middle" class="marker-font" font-size="12" fill="#FEFEFB">$0</text>
+  </g>
+
+  <!-- tiny corner doodle: lightning -->
+  <g transform="translate(15,1075)" filter="url(#rough-soft)">
+    <path d="M6 0 L0 12 L4 12 L0 22 L10 8 L6 8 Z" class="ink-fill" stroke-width="1.5"/>
+    <path d="M6 0 L0 12 L4 12 L0 22 L10 8 L6 8 Z" class="wash-yellow"/>
+  </g>
+
+</svg>
